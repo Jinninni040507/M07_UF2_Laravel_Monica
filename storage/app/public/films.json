@@ -46,5 +46,29 @@
         "country": "Estados Unidos",
         "duration": "93",
         "img_url": "https:\/\/pics.filmaffinity.com\/rio-329010919-large.jpg"
+    },
+    {
+        "name": "Rio2",
+        "year": "2014",
+        "genre": "Animaci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": "101",
+        "img_url": "https:\/\/pics.filmaffinity.com\/rio_2-898699310-large.jpg"
+    },
+    {
+        "name": "Inside Out",
+        "year": "2015",
+        "genre": "Animaci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": "94",
+        "img_url": "https:\/\/pics.filmaffinity.com\/inside_out-161470323-large.jpg"
+    },
+    {
+        "name": "Inside Out 2",
+        "year": "2024",
+        "genre": "Animaci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": "88",
+        "img_url": "https:\/\/pics.filmaffinity.com\/inside_out_2-365634749-large.jpg"
     }
 ]

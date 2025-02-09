@@ -18,7 +18,7 @@ class ValidateUrl
         $pattern = "/[-a-zA-Z0-9@:%_\+.~#?&=\/]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&=\/]*)?/";
         $url = $request->url;
         if (!preg_match($pattern, $url)) {
-            return redirect("/")->with(["error" => "La url de la imagen no es valida."]);
+            return redirect("/filmin/createFilmForm")->with("error", "La url de la imagen no es valida.");
         }
         return $next($request);
     }

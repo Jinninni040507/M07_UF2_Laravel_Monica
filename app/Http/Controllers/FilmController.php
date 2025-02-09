@@ -30,7 +30,7 @@ class FilmController extends Controller
     public static function createFilm(Request $request)
     {
         if (self::isFilm($request->name)) {
-            return view("welcome", ["error" => "Ya existe una película con este título."]);
+            return view("create-film-form", ["error" => "Ya existe una película con este título."]);
         }
         $newFilm = [
             "name" => $request->name,
@@ -176,9 +176,9 @@ class FilmController extends Controller
      */
     public function countFilms()
     {
-        $title = "Listar cuántas pelis hay";
+        $title = "Número de películas";
         $films = FilmController::readFilms();
 
-        return view("films.generic", ["films" => count($films), "title" => $title]);
+        return view("films.numberFilms", ["films" => count($films), "title" => $title]);
     }
 }
