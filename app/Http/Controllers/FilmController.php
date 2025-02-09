@@ -2,10 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
+    /**
+     * Search if a film already exists
+     */
+    public static function isFilm($film): bool
+    {
+        $films = self::readFilms();
+        foreach ($films as $value) {
+            if (
+                $film ===
+                $value["name"]
+            ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Create a new film and save it into the storage
+     */
+    public static function createFilm(Request $request)
+    {
+        if (self::isFilm($request->name)) {
+            return view("welcome", ["error" => "Ya existe una película con este título."]);
+        }
+        $newFilm = [
+            "name" => $request->name,
+            "year" => $request->year,
+            "genre" => $request->genre,
+            "country" => $request->country,
+            "duration" => $request->duration,
+            "img_url" => $request->url,
+        ];
+        $films = [...self::readFilms(), $newFilm];
+        Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
+
+        return self::listAllFilms();
+    }
 
     /**
      * Read films from storage
@@ -15,6 +54,19 @@ class FilmController extends Controller
         $films = Storage::json('/public/films.json');
         return $films;
     }
+
+    /**
+     * List films older than input year 
+     * if year is not infomed 2000 year will be used as criteria
+     */
+    public static function listAllFilms($year = null)
+    {
+        $title = "Listado de todas las Pelis";
+        $films = FilmController::readFilms();
+
+        return view('films.list', ["films" => $films, "title" => $title]);
+    }
+
     /**
      * List films older than input year 
      * if year is not infomed 2000 year will be used as criteria
@@ -55,7 +107,7 @@ class FilmController extends Controller
         return view('films.list', ["films" => $new_films, "title" => $title]);
     }
     /**
-     * Lista TODAS las películas o filtra x año o categoría.
+     * Lista TODAS las películas o filtra x año.
      */
     public function listFilmsByYear($year = null)
     {
@@ -78,6 +130,10 @@ class FilmController extends Controller
         }
         return view("films.list", ["films" => $films_filtered, "title" => $title]);
     }
+
+    /**
+     * Lista TODAS las películas o filtra x categoría.
+     */
     public function listFilmsByGenre($genre = null)
     {
         $films_filtered = [];
@@ -99,6 +155,10 @@ class FilmController extends Controller
         }
         return view("films.list", ["films" => $films_filtered, "title" => $title]);
     }
+
+    /**
+     * Lista TODAS las películas ordenadas x año.
+     */
     public function sortFilms()
     {
         $title = "Listar pelis ordenadas por año";
@@ -111,6 +171,9 @@ class FilmController extends Controller
         return view("films.list", ["films" => $films, "title" => $title]);
     }
 
+    /**
+     * Contar TODAS las películas.
+     */
     public function countFilms()
     {
         $title = "Listar cuántas pelis hay";
