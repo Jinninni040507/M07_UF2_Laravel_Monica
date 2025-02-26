@@ -20,7 +20,7 @@ class FilmFakerSeeder extends Seeder
                 "year" => $faker->year(),
                 "genre" => $faker->randomElement(['romance', 'comedia', 'tragedia', 'terror', 'historica']),
                 "country" => $faker->countryCode(),
-                "duration" => $faker->numberBetween(57, 200),
+                "duration" => $faker->numberBetween(60, 240),
                 "img_url" => $faker->url()
             ));
         }
