@@ -41,6 +41,9 @@
                             <li><a class="dropdown-item" href=/filmout/countFilms>Contar pelis</a></li>
                         </ul>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/actorout/actors/">Listar Actores</a>
+                      </li>
                     </ul>
                   </div>
                 </div>
