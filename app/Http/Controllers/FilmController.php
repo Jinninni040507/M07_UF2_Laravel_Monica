@@ -33,18 +33,30 @@ class FilmController extends Controller
         if (self::isFilm($request->name)) {
             return view("create-film-form", ["error" => "Ya existe una película con este título."]);
         }
-        $newFilm = [
-            "name" => $request->name,
-            "year" => $request->year,
-            "genre" => $request->genre,
-            "country" => $request->country,
-            "duration" => $request->duration,
-            "img_url" => $request->url,
-        ];
-        $films = [...self::readFilms(), $newFilm];
-        Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
 
-        return self::listAllFilms();
+        if ($request->save === "json") {
+            $newFilm = [
+                "name" => $request->name,
+                "year" => $request->year,
+                "genre" => $request->genre,
+                "country" => $request->country,
+                "duration" => $request->duration,
+                "img_url" => $request->url,
+            ];
+            $films = [...self::readFilms(), $newFilm];
+            Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
+
+            return self::listAllFilms();
+        } else {
+            DB::table('films')->insert(array(
+                "name" => $request->name,
+                "year" => $request->year,
+                "genre" => $request->genre,
+                "country" => $request->country,
+                "duration" => (int)$request->duration,
+                "img_url" => $request->url,
+            ));
+        }
     }
 
     /**
