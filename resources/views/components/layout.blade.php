@@ -41,13 +41,22 @@
                             <li><a class="dropdown-item" href=/filmout/countFilms>Contar pelis</a></li>
                         </ul>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/actorout/actors/">Listar Actores</a>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Buscar Actores
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href=/actorout/actors>Todos los actores</a></li>
+                            <hr>
+                            <li><a class="dropdown-item" href=/actorout/searchActorsByDecade>Buscar Actores por década</a></li>
+                            <li>
+                        </ul>
                       </li>
                     </ul>
                   </div>
                 </div>
-              </nav>
+            </nav>
+          
         </header>
 
         <main class="container p-5">
