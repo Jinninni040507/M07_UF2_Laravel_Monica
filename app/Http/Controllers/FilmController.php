@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -47,11 +48,33 @@ class FilmController extends Controller
     }
 
     /**
-     * Read films from storage
+     * Read films from storage & DataBase
      */
     public static function readFilms(): array
     {
-        $films = Storage::json('/public/films.json');
+        $filmsJson = Storage::json('/public/films.json');
+
+        $filmsDB = DB::table("films")
+            ->select('name', 'year', 'genre', 'country', 'duration', 'img_url')
+            ->get()
+            ->map(function ($film) {
+                return (array) $film;
+            })
+            ->toArray();
+
+        $filmsJson = array_map(function ($film) {
+            return [
+                'name' => $film['name'],
+                'year' => $film['year'],
+                'genre' => $film['genre'],
+                'country' => $film['country'],
+                'duration' => $film['duration'],
+                'img_url' => $film['img_url'],
+            ];
+        }, $filmsJson);
+
+        $films = array_merge($filmsJson, $filmsDB);
+
         return $films;
     }
 
