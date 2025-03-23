@@ -177,8 +177,9 @@ class FilmController extends Controller
     public function countFilms()
     {
         $title = "Número de películas";
+        $error = "No hay ningúna perlícula";
         $films = FilmController::readFilms();
 
-        return view("films.numberFilms", ["films" => count($films), "title" => $title]);
+        return view("components.countEntity", ["films" => count($films), "title" => $title, "error" => $error]);
     }
 }

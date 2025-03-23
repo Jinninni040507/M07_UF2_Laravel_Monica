@@ -47,8 +47,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href=/actorout/actors>Todos los actores</a></li>
+                            <li><a class="dropdown-item" href=/actorout/countActors>Contar actores</a></li>
                             <hr>
-                            <li><a class="dropdown-item" href=/actorout/searchActorsByDecade>Buscar Actores por década</a></li>
+                            <li>
+                              <a class="dropdown-item" href=/actorout/searchActorsByDecade>Buscar Actores por década</a>
+                            </li>
                             <li>
                         </ul>
                       </li>

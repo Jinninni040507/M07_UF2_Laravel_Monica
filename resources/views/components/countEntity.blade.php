@@ -2,7 +2,7 @@
     <h1>{{$title}}</h1>
 
     @if(is_null($films))
-        <FONT COLOR="red">No hay ninguna película</FONT>
+        <FONT COLOR="red">{{ $error }}</FONT>
     @else 
         {{$films}}
     @endif
