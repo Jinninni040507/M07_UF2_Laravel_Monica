@@ -43,4 +43,31 @@ class ActorController extends Controller
 
         return view("components.countEntity", ["films" => $numberFilms, "title" => $title, "error" => $error]);
     }
+
+    public function searchActorById($id)
+    {
+        return DB::table("actors")->where('id', $id)->first();
+    }
+    public function deleteActorById($id)
+    {
+        $actor = $this->searchActorById($id);
+
+        if (!$actor) {
+            return response()->json([
+                'id' => $id,
+                'mensaje' => 'No se ha encontrado ningún actor con este ID'
+            ], 404);
+        }
+
+        $deleted = DB::table("actors")->where('id', $id)->delete();
+
+        if ($deleted) {
+            return response()->json([
+                'id' => $id,
+                'mensaje' => 'Se ha borrado correctamente el actor'
+            ], 200);
+        }
+
+        return response()->json(['mensaje' => 'No se ha podido eliminar el actor'], 500);
+    }
 }
