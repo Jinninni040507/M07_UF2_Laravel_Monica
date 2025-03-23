@@ -18,3 +18,5 @@ use App\Http\Controllers\ActorController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {});
 
 Route::delete('/actors/{id}', [ActorController::class, 'deleteActorById']);
+
+Route::get('/actors', [ActorController::class, 'index']);

@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class ActorController extends Controller
 {
+    public static function index()
+    {
+        $title = "Listado de todos los Actores";
+        $actors = DB::table("actors")->select("name", "surname", "birthdate", "country", "img_url")->get()->toArray();
+
+        $actors = array_map(fn($actor) => (array) $actor, $actors);
+
+        return response()->json($actors, 200);
+    }
     public static function listActors()
     {
         $title = "Listado de todos los Actores";
