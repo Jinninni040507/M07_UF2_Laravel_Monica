@@ -47,5 +47,6 @@ Route::middleware('year')->group(function () {
             return view('actors.search-actor-by-decade-form');
         })->name('listActors');
         Route::get('listActorsByDecade/{year?}', [ActorController::class, "listActorsByDecade"])->name('listActors');
+        Route::get('countActors/', [ActorController::class, "countActors"])->name('countActors');
     });
 });

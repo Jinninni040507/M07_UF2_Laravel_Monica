@@ -34,4 +34,13 @@ class ActorController extends Controller
 
         return view('actors.list', ["actors" => $actors, "title" => $title]);
     }
+
+    public function countActors()
+    {
+        $title = "Número de Actores";
+        $error = "No hay nungún actor";
+        $numberFilms = DB::table("actors")->select()->count();
+
+        return view("components.countEntity", ["films" => $numberFilms, "title" => $title, "error" => $error]);
+    }
 }
