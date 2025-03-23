@@ -26,12 +26,9 @@
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/filmin/createFilmForm">Añadir Película</a>
-                      </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Buscar Pelis
+                          Películas
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href=/filmout/films>Todas las pelis</a></li>
@@ -39,12 +36,29 @@
                             <li><a class="dropdown-item" href=/filmout/oldFilms>Pelis antiguas</a></li>
                             <li><a class="dropdown-item" href=/filmout/sortFilms>Pelis ordenadas por año</a></li>
                             <li><a class="dropdown-item" href=/filmout/countFilms>Contar pelis</a></li>
+                            <hr>
+                            <li><a class="dropdown-item" href="/filmin/createFilmForm">Añadir Película</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Actores
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href=/actorout/actors>Todos los actores</a></li>
+                            <li><a class="dropdown-item" href=/actorout/countActors>Contar actores</a></li>
+                            <hr>
+                            <li>
+                              <a class="dropdown-item" href=/actorout/searchActorsByDecade>Buscar Actores por década</a>
+                            </li>
+                            <li>
                         </ul>
                       </li>
                     </ul>
                   </div>
                 </div>
-              </nav>
+            </nav>
+          
         </header>
 
         <main class="container p-5">

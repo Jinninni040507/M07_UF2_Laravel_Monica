@@ -70,5 +70,93 @@
         "country": "Estados Unidos",
         "duration": "88",
         "img_url": "https:\/\/pics.filmaffinity.com\/inside_out_2-365634749-large.jpg"
+    },
+    {
+        "name": "Et quod sed est.",
+        "year": "1970",
+        "genre": "comedia",
+        "country": "AI",
+        "duration": 205,
+        "img_url": "http:\/\/rosenbaum.com\/voluptatem-vel-alias-et-saepe-cum-eum.html"
+    },
+    {
+        "name": "Ea velit consectetur quidem et.",
+        "year": "2015",
+        "genre": "tragedia",
+        "country": "KZ",
+        "duration": 76,
+        "img_url": "http:\/\/bode.info\/voluptatem-corporis-quis-optio-sit-temporibus-consectetur-debitis-praesentium"
+    },
+    {
+        "name": "Eveniet et cum unde.",
+        "year": "2004",
+        "genre": "terror",
+        "country": "ER",
+        "duration": 134,
+        "img_url": "http:\/\/www.mills.info\/doloremque-quasi-eveniet-quasi-voluptate-illo-et"
+    },
+    {
+        "name": "Eos omnis itaque.",
+        "year": "2020",
+        "genre": "romance",
+        "country": "SN",
+        "duration": 228,
+        "img_url": "http:\/\/www.dietrich.org\/iste-rerum-quia-aliquid-et-neque-nobis.html"
+    },
+    {
+        "name": "Sunt soluta quo quos.",
+        "year": "1999",
+        "genre": "terror",
+        "country": "PN",
+        "duration": 205,
+        "img_url": "http:\/\/jacobs.com\/aut-eligendi-et-ut-cum"
+    },
+    {
+        "name": "Et sed voluptas aut.",
+        "year": "2006",
+        "genre": "historica",
+        "country": "IT",
+        "duration": 108,
+        "img_url": "http:\/\/www.lueilwitz.com\/"
+    },
+    {
+        "name": "Voluptatem quos a ipsa sapiente.",
+        "year": "1986",
+        "genre": "historica",
+        "country": "BS",
+        "duration": 111,
+        "img_url": "http:\/\/maggio.com\/nemo-qui-perspiciatis-doloribus-earum-possimus-quaerat"
+    },
+    {
+        "name": "Animi quae.",
+        "year": "2024",
+        "genre": "tragedia",
+        "country": "EE",
+        "duration": 66,
+        "img_url": "http:\/\/sauer.info\/ducimus-ea-repellat-quis-velit-laboriosam-doloremque"
+    },
+    {
+        "name": "Aut voluptates recusandae possimus.",
+        "year": "2014",
+        "genre": "historica",
+        "country": "JE",
+        "duration": 134,
+        "img_url": "http:\/\/www.schmitt.org\/tempore-perspiciatis-ipsum-enim-ipsam.html"
+    },
+    {
+        "name": "Illo sequi voluptatibus.",
+        "year": "2024",
+        "genre": "tragedia",
+        "country": "PW",
+        "duration": 166,
+        "img_url": "http:\/\/www.greenholt.com\/veritatis-laborum-quo-beatae-qui"
+    },
+    {
+        "name": "Ferdinand",
+        "year": "2017",
+        "genre": "Animaci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": "106",
+        "img_url": "https:\/\/pics.filmaffinity.com\/ferdinand-787101543-mmed.jpg"
     }
 ]

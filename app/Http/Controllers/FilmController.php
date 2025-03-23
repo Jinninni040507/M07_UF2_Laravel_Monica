@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -32,26 +33,60 @@ class FilmController extends Controller
         if (self::isFilm($request->name)) {
             return view("create-film-form", ["error" => "Ya existe una película con este título."]);
         }
-        $newFilm = [
-            "name" => $request->name,
-            "year" => $request->year,
-            "genre" => $request->genre,
-            "country" => $request->country,
-            "duration" => $request->duration,
-            "img_url" => $request->url,
-        ];
-        $films = [...self::readFilms(), $newFilm];
-        Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
 
-        return self::listAllFilms();
+        if ($request->save === "json") {
+            $newFilm = [
+                "name" => $request->name,
+                "year" => $request->year,
+                "genre" => $request->genre,
+                "country" => $request->country,
+                "duration" => $request->duration,
+                "img_url" => $request->url,
+            ];
+            $films = [...self::readFilms(), $newFilm];
+            Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
+
+            return self::listAllFilms();
+        } else {
+            DB::table('films')->insert(array(
+                "name" => $request->name,
+                "year" => $request->year,
+                "genre" => $request->genre,
+                "country" => $request->country,
+                "duration" => (int)$request->duration,
+                "img_url" => $request->url,
+            ));
+        }
     }
 
     /**
-     * Read films from storage
+     * Read films from storage & DataBase
      */
     public static function readFilms(): array
     {
-        $films = Storage::json('/public/films.json');
+        $filmsJson = Storage::json('/public/films.json');
+
+        $filmsDB = DB::table("films")
+            ->select('name', 'year', 'genre', 'country', 'duration', 'img_url')
+            ->get()
+            ->map(function ($film) {
+                return (array) $film;
+            })
+            ->toArray();
+
+        $filmsJson = array_map(function ($film) {
+            return [
+                'name' => $film['name'],
+                'year' => $film['year'],
+                'genre' => $film['genre'],
+                'country' => $film['country'],
+                'duration' => $film['duration'],
+                'img_url' => $film['img_url'],
+            ];
+        }, $filmsJson);
+
+        $films = array_merge($filmsJson, $filmsDB);
+
         return $films;
     }
 
@@ -177,8 +212,10 @@ class FilmController extends Controller
     public function countFilms()
     {
         $title = "Número de películas";
-        $films = FilmController::readFilms();
+        $error = "No hay ningúna perlícula";
+        // $films = FilmController::readFilms();
+        $films = DB::table('films')->select()->count();
 
-        return view("films.numberFilms", ["films" => count($films), "title" => $title]);
+        return view("components.countEntity", ["films" => $films, "title" => $title, "error" => $error]);
     }
 }
