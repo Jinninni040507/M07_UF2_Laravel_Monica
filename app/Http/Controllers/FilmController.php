@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -48,14 +48,14 @@ class FilmController extends Controller
 
             return self::listAllFilms();
         } else {
-            DB::table('films')->insert(array(
+            Film::insert([
                 "name" => $request->name,
                 "year" => $request->year,
                 "genre" => $request->genre,
                 "country" => $request->country,
                 "duration" => (int)$request->duration,
                 "img_url" => $request->url,
-            ));
+            ]);
         }
     }
 
@@ -66,8 +66,7 @@ class FilmController extends Controller
     {
         $filmsJson = Storage::json('/public/films.json');
 
-        $filmsDB = DB::table("films")
-            ->select('name', 'year', 'genre', 'country', 'duration', 'img_url')
+        $filmsDB = Film::select('name', 'year', 'genre', 'country', 'duration', 'img_url')
             ->get()
             ->map(function ($film) {
                 return (array) $film;
@@ -213,8 +212,8 @@ class FilmController extends Controller
     {
         $title = "Número de películas";
         $error = "No hay ningúna perlícula";
-        // $films = FilmController::readFilms();
-        $films = DB::table('films')->select()->count();
+
+        $films = Film::select()->count();
 
         return view("components.countEntity", ["films" => $films, "title" => $title, "error" => $error]);
     }
