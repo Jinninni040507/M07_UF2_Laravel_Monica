@@ -14,6 +14,5 @@ class Actor extends Model
     {
         return $this->belongsToMany(Film::class, 'films_actors');
     }
-
     public $timestamps = true;
 }

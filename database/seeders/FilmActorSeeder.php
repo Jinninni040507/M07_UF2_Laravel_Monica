@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Actor;
+use App\Models\Film;
 
 class FilmActorSeeder extends Seeder
 {
@@ -13,8 +15,8 @@ class FilmActorSeeder extends Seeder
      */
     public function run(): void
     {
-        $films = DB::table('films')->pluck('id')->toArray();
-        $actors = DB::table('actors')->pluck('id')->toArray();
+        $films = Film::pluck('id')->toArray();
+        $actors = Actor::pluck('id')->toArray();
 
         foreach ($films as $filmId) {
             $actorIds = array_map(fn($key) => $actors[$key], (array)array_rand($actors, rand(1, 3)));
