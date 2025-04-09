@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            RatingFakerSeeder::class,
+            // RatingFakerSeeder::class,
             FilmFakerSeeder::class,
             ActorFakerSeeder::class,
             FilmActorSeeder::class,
