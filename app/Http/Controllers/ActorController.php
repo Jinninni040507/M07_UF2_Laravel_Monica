@@ -56,13 +56,9 @@ class ActorController extends Controller
     {
         $deleted = Actor::destroy($id);
 
-        if ($deleted) {
-            return response()->json([
-                'action' => $id,
-                'status' => $deleted > 0
-            ]);
-        }
-
-        return response()->json(['mensaje' => 'No se ha podido eliminar el actor'], 500);
+        return response()->json([
+            'action' => $id,
+            'status' => $deleted > 0
+        ]);
     }
 }
