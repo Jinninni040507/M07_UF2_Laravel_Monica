@@ -13,7 +13,6 @@ class RatingFakerSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Fake();
         for ($i = 0; $i < 6; $i++) {
             $val = $i;
             DB::table('ratings')->insert(array(

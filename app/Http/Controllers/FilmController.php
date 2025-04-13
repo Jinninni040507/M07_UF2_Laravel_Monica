@@ -52,8 +52,6 @@ class FilmController extends Controller
             ];
             $films = [...self::readFilms(), $newFilm];
             Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
-
-            return self::listAllFilms();
         } else {
             Film::insert([
                 "name" => $request->name,
@@ -64,6 +62,7 @@ class FilmController extends Controller
                 "img_url" => $request->url,
             ]);
         }
+        return self::listAllFilms();
     }
 
     /**
