@@ -37,11 +37,17 @@ class FilmController extends Controller
      */
     public static function createFilm(Request $request)
     {
+        /*
+        * json = false
+        * bbdd = true
+        */
+        $save = false;
+
         if (self::isFilm($request->name)) {
             return view("create-film-form", ["error" => "Ya existe una película con este título."]);
         }
 
-        if ($request->save === "json") {
+        if ($save === false) {
             $newFilm = [
                 "name" => $request->name,
                 "year" => $request->year,
