@@ -54,22 +54,13 @@ class ActorController extends Controller
     }
     public function deleteActorById($id)
     {
-        $actor = $this->searchActorById($id);
-
-        if (!$actor) {
-            return response()->json([
-                'id' => $id,
-                'mensaje' => 'No se ha encontrado ningún actor con este ID'
-            ], 404);
-        }
-
-        $deleted = Actor::where('id', $id)->delete();
+        $deleted = Actor::destroy($id);
 
         if ($deleted) {
             return response()->json([
-                'id' => $id,
-                'mensaje' => 'Se ha borrado correctamente el actor'
-            ], 200);
+                'action' => $id,
+                'status' => $deleted
+            ]);
         }
 
         return response()->json(['mensaje' => 'No se ha podido eliminar el actor'], 500);
