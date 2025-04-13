@@ -24,13 +24,6 @@
         
         @csrf
         <label class="d-flex flex-column mb-4 form-label">
-            <div class="mb-2">Dónde quieres guardar la peli?</div>
-            <select name="save" id="" required>
-                <option value="json">Json</option>
-                <option value="db">Base de datos</option>
-            </select>
-        </label>
-        <label class="d-flex flex-column mb-4 form-label">
             <div class="mb-2">Nombre:</div>
             <input name="name" type="text" required>
         </label>
