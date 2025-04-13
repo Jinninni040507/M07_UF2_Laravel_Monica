@@ -6,8 +6,15 @@ use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class FilmController extends Controller
 {
+    public static function index()
+    {
+        $films = Film::with('actors')->get()->toArray();
+        return response()->json($films, 200);
+    }
+
     /**
      * Search if a film already exists
      */
@@ -66,12 +73,7 @@ class FilmController extends Controller
     {
         $filmsJson = Storage::json('/public/films.json');
 
-        $filmsDB = Film::select('name', 'year', 'genre', 'country', 'duration', 'img_url')
-            ->get()
-            ->map(function ($film) {
-                return (array) $film;
-            })
-            ->toArray();
+        $filmsDB = Film::all()->toArray();
 
         $filmsJson = array_map(function ($film) {
             return [
@@ -213,7 +215,7 @@ class FilmController extends Controller
         $title = "Número de películas";
         $error = "No hay ningúna perlícula";
 
-        $films = Film::select()->count();
+        $films = Film::all()->count();
 
         return view("components.countEntity", ["films" => $films, "title" => $title, "error" => $error]);
     }

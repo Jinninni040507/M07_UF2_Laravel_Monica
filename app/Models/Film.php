@@ -10,10 +10,9 @@ class Film extends Model
     use HasFactory;
 
     protected $table = 'films';
-    public function subjects()
+    public function actors()
     {
         return $this->belongsToMany(Actor::class, 'films_actors');
     }
-
     public $timestamps = true;
 }
