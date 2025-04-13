@@ -1,6 +1,6 @@
     
 <x-layout>
-   
+   <div class="container p-5">
 
     @if (!empty(session("error")))
         <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -34,5 +34,6 @@
         <button class="btn btn-primary" type="submit">Buscar Actores</button>
     </form>
 
+    </div>
 </div>
 </x-layout>

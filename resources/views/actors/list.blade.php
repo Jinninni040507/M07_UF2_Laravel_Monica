@@ -1,4 +1,5 @@
 <x-layout>
+    <div class="container p-5">
     <h1>{{$title}}</h1>
 
     @if(empty($actors))
@@ -27,4 +28,5 @@
         </table>
     </div>
     @endif
+    </div>
 </x-layout>
