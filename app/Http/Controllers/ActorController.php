@@ -40,8 +40,6 @@ class ActorController extends Controller
 
         $actors = Actor::select("name", "surname", "birthdate", "country", "img_url")->whereBetween("birthdate", [$decadeStart, $decadeEnd])->get()->toArray();
 
-        $actors = array_map(fn($actor) => (array) $actor, $actors);
-
         return view('actors.list', ["actors" => $actors, "title" => $title]);
     }
 
@@ -49,14 +47,14 @@ class ActorController extends Controller
     {
         $title = "Número de Actores";
         $error = "No hay nungún actor";
-        $numberFilms = Actor::select()->count();
+        $numberFilms = Actor::all()->count();
 
         return view("components.countEntity", ["films" => $numberFilms, "title" => $title, "error" => $error]);
     }
 
     public function searchActorById($id)
     {
-        return Actor::where('id', $id)->first();
+        return Actor::find($id)->first();
     }
     public function deleteActorById($id)
     {
