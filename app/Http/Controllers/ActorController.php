@@ -59,7 +59,7 @@ class ActorController extends Controller
         if ($deleted) {
             return response()->json([
                 'action' => $id,
-                'status' => $deleted
+                'status' => $deleted > 0
             ]);
         }
 
