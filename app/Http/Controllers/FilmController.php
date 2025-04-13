@@ -48,6 +48,7 @@ class FilmController extends Controller
         }
 
         if ($save === false) {
+            $filmsJson = Storage::json('/public/films.json');
             $newFilm = [
                 "name" => $request->name,
                 "year" => $request->year,
@@ -56,7 +57,7 @@ class FilmController extends Controller
                 "duration" => $request->duration,
                 "img_url" => $request->url,
             ];
-            $films = [...self::readFilms(), $newFilm];
+            $films = [...$filmsJson, $newFilm];
             Storage::put("/public/films.json", json_encode($films, JSON_PRETTY_PRINT));
         } else {
             Film::insert([
