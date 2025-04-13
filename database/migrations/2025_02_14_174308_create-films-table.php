@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('country', 30);
             $table->integer('duration',);
             $table->string('img_url', 255);
-            $table->foreignId('rating')->constrained('ratings');
+            $table->foreignId('rating')->nullable()->constrained('ratings');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
