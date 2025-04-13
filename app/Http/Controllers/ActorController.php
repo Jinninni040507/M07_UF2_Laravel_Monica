@@ -11,11 +11,7 @@ class ActorController extends Controller
 {
     public static function index()
     {
-        $title = "Listado de todos los Actores";
-        $actors = Actor::select("name", "surname", "birthdate", "country", "img_url")->get()->toArray();
-
-        $actors = array_map(fn($actor) => (array) $actor, $actors);
-
+        $actors = Actor::with('films')->get()->toArray();
         return response()->json($actors, 200);
     }
     public static function listActors()
