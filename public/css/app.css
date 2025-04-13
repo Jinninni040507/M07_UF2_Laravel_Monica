@@ -1,0 +1,47 @@
+.homepage-front-image {
+    width: 100%;
+
+    & > img {
+        animation-name: toggleColors;
+        animation-duration: 2s;
+        animation-timing-function: steps(1);
+        animation-iteration-count: infinite;
+    }
+
+    & > .img-2 {
+        animation-direction: reverse;
+    }
+}
+@keyframes toggleColors {
+    0% {
+        opacity: inherit;
+    }
+    50% {
+        display: none;
+    }
+}
+
+.navbar-custom {
+    background-color: #f9aabe !important; /* tu color personalizado */
+    color: #edede0 !important;
+}
+
+.navbar-custom a {
+    color: rgb(36, 28, 28) !important;
+}
+
+.navbar-custom a:hover {
+    color: #f26d90 !important;
+}
+
+.footer-custom {
+    background-color: #f9aabe !important;
+    color: #212121 !important;
+}
+
+.bg-body-tertiary {
+    color: #f26d90 !important;
+}
+.text-body {
+    color: #f26d90 !important;
+}
